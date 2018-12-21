@@ -162,6 +162,7 @@
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="ITES.h" />
     <ClInclude Include="Josephus.h" />
+    <ClInclude Include="Network.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Performance.h" />
     <ClInclude Include="Problem.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="ITES.cpp" />
     <ClCompile Include="Josephus.cpp" />
+    <ClCompile Include="Network.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

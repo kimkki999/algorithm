@@ -1,0 +1,81 @@
+#include "pch.h"
+#include "Network.h"
+#include "../00.KKICommon/Log.h"
+#include "../00.KKICommon/Elapse.h"
+
+Network::Network()
+	: Problem()
+{
+}
+
+
+Network::~Network()
+{
+}
+
+void Network::Input()
+{
+}
+
+void Network::Solve()
+{
+	Logger->Write(Debug, "%s::%s", typeid(this).name(), __func__);
+
+	Elapse elp;
+	elp.Start();
+	
+	const int INF = INT32_MAX;
+	const int MAX_V = 50;
+	int V;
+	int capacity[MAX_V][MAX_V], flow[MAX_V][MAX_V];
+
+	auto networkFlow = [&](int source, int sink)->int {
+		memset(flow, 0, sizeof(flow));
+		int totalFlow = 0;
+
+		while (true) {
+			vector<int> parent(MAX_V, -1);
+			queue<int> q;
+			parent[source] = source;
+			q.push(source);
+
+			while (!q.empty() && parent[sink] == -1) {
+				int here = q.front(); 
+				q.pop();
+
+				for (int there = 0; there < V; ++there) {
+					if (capacity[here][there] - flow[here][there] > 0 &&
+						parent[there] == -1) {
+						q.push(there);
+						parent[there] = here;
+					}
+				}
+			}
+
+			if (parent[sink] == -1) break;
+
+			int amount = INF;
+			for (int p = sink; p != source; p = parent[p]) {
+				amount = min(capacity[parent[p]][p] - flow[parent[p]][p], amount);
+			}
+
+			for (int p = sink; p != source; p = parent[p]) {
+				flow[parent[p]][p] += amount;
+				flow[p][parent[p]] -= amount;
+			}
+			totalFlow += amount;
+		}
+
+		return totalFlow;
+	};
+
+	Logger->Write(Info, "solve elapse : %lf", elp.End());
+}
+
+void Network::Result()
+{
+}
+
+void Network::TestInput()
+{
+}
