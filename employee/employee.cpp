@@ -182,10 +182,10 @@ vector<pair<int, int>> makeQuery(int numQuery) {
 
 	for (int i = 0; i < numQuery; i++) {
 		int id = getRandomNumber(1, 2);
-		string str = makeKeyword();
+		//string str = makeKeyword();
 		int length = getRandomNumber(1, 10);
 
-		result.push_back(make_pair(type, make_pair(str, length)));
+		//result.push_back(make_pair(type, make_pair(str, length)));
 	}
 
 	return result;
@@ -202,36 +202,36 @@ void WriteLog(string msg, const clock_t& start) {
 }
 
 
-int main() {
-	/* Enter your code here. Read input from STDIN. Print output to STDOUT */
-	Manager manager;
-	int numEmployee, numQuery;
-	cin >> numEmployee >> numQuery;
-
-	while (numEmployee--) {
-		int id, superId, resourceCount;
-		cin >> id >> superId >> resourceCount;
-
-		vector<int> resources;
-		while (resourceCount--) {
-			int resourceId;
-			cin >> resourceId;
-			resources.push_back(resourceId);
-		}
-		manager.AddEmp(id, superId, resources);
-	}
-
-	while (numQuery--) {
-		int id, resourceId;
-		cin >> id >> resourceId;
-
-		string result = "false";
-		if (manager.HasResource(id, resourceId)) {
-			result = "true";
-		}
-
-		cout << result << endl;
-	}
-
-	return 0;
-}
+//int main() {
+//	/* Enter your code here. Read input from STDIN. Print output to STDOUT */
+//	Manager manager;
+//	int numEmployee, numQuery;
+//	cin >> numEmployee >> numQuery;
+//
+//	while (numEmployee--) {
+//		int id, superId, resourceCount;
+//		cin >> id >> superId >> resourceCount;
+//
+//		vector<int> resources;
+//		while (resourceCount--) {
+//			int resourceId;
+//			cin >> resourceId;
+//			resources.push_back(resourceId);
+//		}
+//		manager.AddEmp(id, superId, resources);
+//	}
+//
+//	while (numQuery--) {
+//		int id, resourceId;
+//		cin >> id >> resourceId;
+//
+//		string result = "false";
+//		if (manager.HasResource(id, resourceId)) {
+//			result = "true";
+//		}
+//
+//		cout << result << endl;
+//	}
+//
+//	return 0;
+//}

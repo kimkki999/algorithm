@@ -28,7 +28,7 @@ void BFS::Solve()
 	vector<vector<int>> adj;
 
 	auto bfs = [&adj](int start)->vector<int> {
-		vector<bool> discovered(adj.size, false);
+		vector<bool> discovered(adj.size(), false);
 		queue<int> q;
 
 		vector<int> order;
