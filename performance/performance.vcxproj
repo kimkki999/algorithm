@@ -159,6 +159,7 @@
     <ClInclude Include="algorithm.h" />
     <ClInclude Include="BFS.h" />
     <ClInclude Include="Brackets2.h" />
+    <ClInclude Include="CalcTime.h" />
     <ClInclude Include="Dictionary.h" />
     <ClInclude Include="ITES.h" />
     <ClInclude Include="Josephus.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Performance.h" />
     <ClInclude Include="Problem.h" />
+    <ClInclude Include="Recursive.h" />
     <ClInclude Include="SoLong.h" />
     <ClInclude Include="StlFunctionTest.h" />
     <ClInclude Include="WordChain.h" />
@@ -173,6 +175,7 @@
   <ItemGroup>
     <ClCompile Include="BFS.cpp" />
     <ClCompile Include="Brackets2.cpp" />
+    <ClCompile Include="CalcTime.cpp" />
     <ClCompile Include="Dictionary.cpp" />
     <ClCompile Include="ITES.cpp" />
     <ClCompile Include="Josephus.cpp" />
@@ -184,6 +187,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Recursive.cpp" />
     <ClCompile Include="SoLong.cpp" />
     <ClCompile Include="WordChain.cpp" />
   </ItemGroup>

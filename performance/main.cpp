@@ -13,6 +13,8 @@
 #include "ITES.h"
 #include "SoLong.h"
 #include "Dictionary.h"
+#include "CalcTime.h"
+#include "Recursive.h"
 
 int main()
 {
@@ -28,7 +30,8 @@ int main()
 	//StlFunctionTest::Start();
 	//Algorithm::Start();
 	//list<Problem*> problems{ new Josephus(), new Brackets2(), new ITES(), new SoLong() };
-	list<Problem*> problems{ new SoLong(), new Dictionary() };
+	list<Problem*> problems{ //new SoLong(), new Dictionary(), new CalcTime(),
+							new Recursive()};
 	
 	for (auto val : problems) {
 		//val->Input();
