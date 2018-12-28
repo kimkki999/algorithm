@@ -15,6 +15,8 @@
 #include "Dictionary.h"
 #include "CalcTime.h"
 #include "Recursive.h"
+#include "Greedy.h"
+#include "Boggle.h"
 
 int main()
 {
@@ -31,7 +33,8 @@ int main()
 	//Algorithm::Start();
 	//list<Problem*> problems{ new Josephus(), new Brackets2(), new ITES(), new SoLong() };
 	list<Problem*> problems{ //new SoLong(), new Dictionary(), new CalcTime(),
-							new Recursive()};
+							new Recursive(), new Greedy(), new CalcTime(),
+							new Boggle()};
 	
 	for (auto val : problems) {
 		//val->Input();

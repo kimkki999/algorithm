@@ -23,15 +23,27 @@ void CalcTime::Solve()
 {
 	Logger->Write(Debug, "%s::%s", typeid(this).name(), __func__);
 
+	//bit test
 	Elapse elp;
+
+	unsigned long long max = 1000000000;//10¾ï
 	elp.Start();
-	
-	for (long long i = 0; i < 1000000000; i++) {
-		for (long long j = 0; j < 1; j++) {
-			long long k = i;
-		}
+	for (unsigned long long i = 0; i < 1000000000; i++) {
+		;
+	}
+	Logger->Write(Info, "solve elapse : %lf", elp.End());
+
+	elp.Start();		
+	for (unsigned long long i = 0; i < 1000000000; i++) {
+		int n = 1 << 30;
 	}
 
+	Logger->Write(Info, "solve elapse : %lf", elp.End());
+
+	elp.Start();
+	for (unsigned long long i = 0; i < 1000000000; i++) {
+		int n = 1 << 1;
+	}	
 	Logger->Write(Info, "solve elapse : %lf", elp.End());
 }
 

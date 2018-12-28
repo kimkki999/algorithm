@@ -60,6 +60,15 @@
     <ClInclude Include="Recursive.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Dynamic.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Greedy.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Boggle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -96,6 +105,15 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Recursive.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Dynamic.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Greedy.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Boggle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
