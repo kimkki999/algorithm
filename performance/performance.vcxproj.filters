@@ -69,6 +69,12 @@
     <ClInclude Include="Boggle.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Picnic.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardCover.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -114,6 +120,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Boggle.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Picnic.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardCover.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
