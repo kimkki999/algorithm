@@ -175,6 +175,7 @@
     <ClInclude Include="Recursive.h" />
     <ClInclude Include="SoLong.h" />
     <ClInclude Include="StlFunctionTest.h" />
+    <ClInclude Include="Tsp.h" />
     <ClInclude Include="WordChain.h" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +200,7 @@
     <ClCompile Include="Picnic.cpp" />
     <ClCompile Include="Recursive.cpp" />
     <ClCompile Include="SoLong.cpp" />
+    <ClCompile Include="Tsp.cpp" />
     <ClCompile Include="WordChain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
