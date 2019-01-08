@@ -189,6 +189,5 @@ void BoardCover::TestInput()
 	_input.push_back("##...##");
 */
 	_input.push_back("#...#");
-	_input.push_back("#...#");
-	
+	_input.push_back("#...#");	
 }

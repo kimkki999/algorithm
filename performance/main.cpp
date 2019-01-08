@@ -18,6 +18,7 @@
 #include "Greedy.h"
 #include "Boggle.h"
 #include "BoardCover.h"
+#include "QuadTree.h"
 
 int main()
 {
@@ -35,7 +36,8 @@ int main()
 	//list<Problem*> problems{ new Josephus(), new Brackets2(), new ITES(), new SoLong() };
 	list<Problem*> problems{ //new SoLong(), new Dictionary(), new CalcTime(),
 							//new Recursive(), new Greedy(), new CalcTime(),
-							new BoardCover()};
+							//new BoardCover()};
+		new QuadTree() };
 	
 	for (auto val : problems) {
 		//val->Input();
