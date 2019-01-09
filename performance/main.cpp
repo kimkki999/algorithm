@@ -19,6 +19,7 @@
 #include "Boggle.h"
 #include "BoardCover.h"
 #include "QuadTree.h"
+#include "ProgrammersTest.h"
 
 int main()
 {
@@ -37,7 +38,8 @@ int main()
 	list<Problem*> problems{ //new SoLong(), new Dictionary(), new CalcTime(),
 							//new Recursive(), new Greedy(), new CalcTime(),
 							//new BoardCover()};
-		new QuadTree() };
+		//new QuadTree() };
+		new ProgrammersTest() };
 	
 	for (auto val : problems) {
 		//val->Input();

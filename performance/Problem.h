@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <queue>
 #include <functional>
+#include <string.h>
 #include "../00.KKICommon/Log.h"
 #include "../00.KKICommon/Elapse.h"
 
