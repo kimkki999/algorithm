@@ -212,6 +212,146 @@ int ProgrammersTest::MaxSteal(vector<int> money1) {
 	return result;
 }
 
+int ProgrammersTest::MaxGive(int limit, vector<vector<int>> travel) {
+
+	function<pair<int, int>(pair<int, int>&, pair<int, int>&, int)> addPair = 
+		[](pair<int, int>& fir, pair<int,int>& sec, int limit)->pair<int, int> {
+		int first = fir.first + sec.first;
+		int second = fir.second + sec.second;
+
+		if (second > limit)
+			first = 0;
+		return pair<int, int>(first, second);
+	};
+
+	reverse(travel.begin(), travel.end());
+
+	function<pair<int, int> (int, int)> maxGive = [&](int start, int type)->pair<int,int> {
+		if (start == travel.size())
+			return make_pair(0, 0);
+		
+		// cache
+
+		// calc
+		pair<int, int> ret(0, 0);
+
+		pair<int, int> curVal;
+		if (type == 0) {
+			curVal.first = (travel[start][1]);
+			curVal.second = (travel[start][0]);
+		}
+		else {
+			curVal.first = (travel[start][3]);
+			curVal.second = (travel[start][2]);
+		}
+		
+		//type 0:walk 1:bycle
+		auto val1 = maxGive(start + 1, 0);
+		auto val2 = maxGive(start + 1, 1);
+		val1 = addPair(val1, curVal, limit);
+		val2 = addPair(val2, curVal, limit);
+
+		ret = max(val1, val2);
+		
+		return ret;
+	};
+
+	auto result1 = maxGive(0, 0);
+	auto result2 = maxGive(0, 1);
+	
+	auto result = max(result1, result2);
+	return result.first;
+}
+
+int ProgrammersTest::MaxOrderCount(int K, vector<int> box) {
+
+	vector<int> partialSum;
+	int sum = 0;
+	for (const auto& val : box) {
+		sum += val;
+		partialSum.push_back(sum);
+	}
+
+	function<int(int)> maxOrderCount = [&](int start)->int {
+		if (start == box.size()) {
+			return 0;
+		}
+
+		int ret = 0;
+		int stand = start == 0 ? 0 : box[start - 1];
+
+		for (int i = start; i < box.size(); i++) {
+			int val = box[start] - stand;
+			if (val%K == 0) {
+				ret += 1;
+			}
+		}		
+		
+		return ret;
+	};
+
+	return 0;
+}
+
+int ProgrammersTest::NetworkFlow(int vertex, vector<vector<int>> c)
+{
+	const int MAX_V = 100;
+	// capacity[u][v] = u에서 v로 보낼 수 있는 용량
+	// flow[u][v] = u에서 v로 흘러가는 유량 (반대 방향인 경우 음수)
+	int capacity[MAX_V][MAX_V], flow[MAX_V][MAX_V];
+
+	for (int i = 0; i < c.size(); i++) {
+		for (int j = 0; j < c[i].size(); j++) {
+			capacity[i][j] = c[i][j];
+		}
+	}
+
+	// flow[][]를 계산하고 총 유량을 반환한다
+	function<int (int,int)> networkFlow = [&](int source, int sink)->int {
+		// flow 를 0으로 초기화한다
+		memset(flow, 0, sizeof(flow));
+		int totalFlow = 0;
+
+		while (true) {
+			// 너비 우선 탐색으로 증가 경로를 찾는다
+			vector<int> parent(MAX_V, -1);
+			queue<int> q;
+			parent[source] = source;
+			q.push(source);
+			while (!q.empty()) {
+				int here = q.front(); q.pop();
+				for (int there = 0; there < vertex; ++there) {
+					// 잔여 용량이 남아 있는 간선을 따라 탐색한다
+					if (capacity[here][there] - flow[here][there] > 0 && parent[there] == -1) {
+						q.push(there);
+						parent[there] = here;
+					}
+				}
+
+				// 조기 종료 조건 추가
+				if (parent[sink] != -1) break;
+			}
+			// 증가 경로가 없으면 종료한다
+			if (parent[sink] == -1) break;
+			// 증가 경로를 통해 유량을 얼마나 보낼지 결정한다
+			int amount = 987654321;
+			for (int p = sink; p != source; p = parent[p])
+				amount = min(amount, capacity[parent[p]][p] - flow[parent[p]][p]);
+			// 증가 경로를 통해 유량을 보낸다
+			for (int p = sink; p != source; p = parent[p]) {
+				flow[parent[p]][p] += amount;
+				flow[p][parent[p]] -= amount;
+			}
+			totalFlow += amount;
+		}
+
+		return totalFlow;
+	};
+
+	int result = networkFlow(0, vertex - 1);
+	return result;
+}
+
 void ProgrammersTest::Solve()
 {
 	MaxPath();
@@ -238,6 +378,26 @@ void ProgrammersTest::Solve()
 	_ASSERT(MaxSteal({ 5,1,1,2,3 }) == 7);//원형이어서
 	_ASSERT(MaxSteal({ 0,0,0 }) == 0);
 	_ASSERT(MaxSteal({ 0,0,1,0,2 }) == 3);
+
+	_ASSERT(MaxGive(6, { {1,1,2,2}, {2,2,3,3}}) == 5);
+	_ASSERT(MaxGive(7, { {1,1,2,2}, {3,3,4,4} }) == 6);
+	_ASSERT(MaxGive(5, { {1,1,2,2}, {5,5,3,3} }) == 5);
+//	_ASSERT(MaxGive(1650, { {500, 200, 200, 100}, {800, 370, 300, 120}, {700, 250, 300, 90} }) == 660);
+//	_ASSERT(MaxGive(3000, { {1000, 2000, 300, 700}, {1100, 1900, 400, 900}, {900, 1800, 400, 700}, {1200, 2300, 500, 1200} }) == 5900);
+
+	// 양방향
+	_ASSERT(NetworkFlow(4, { {0,1,3,0},{1,0,0,2},{3,0,0,1},{0,2,1,0} }) == 2);
+	// 한방향
+	_ASSERT(NetworkFlow(4, { {0,1,3,0},{0,0,0,2},{0,0,0,1},{0,0,0,0} }) == 2);
+	// cross 한방향
+	_ASSERT(NetworkFlow(4, { {0,1,3,0},{0,0,1,2},{0,0,0,1},{0,0,0,0} }) == 2);
+	//        a
+	//     10     1
+	//  s     10      t
+	//    1       10
+	//        b    
+	_ASSERT(NetworkFlow(4, { {0,10,1,0},{0,0,10,1},{0,0,0,10},{0,0,0,0} }) == 11);
+
 }
 
 void ProgrammersTest::Result()
